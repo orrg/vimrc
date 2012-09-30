@@ -4,7 +4,7 @@ A central home for my personal vim configuration.
 
 ## vim scripts
 * [dwm](http://www.vim.org/scripts/script.php?script_id=4186)
-* [SuperTav](http://www.vim.org/scripts/script.php?script_id=1643)
+* [SuperTab](http://www.vim.org/scripts/script.php?script_id=1643)
 * [The NERD tree](http://www.vim.org/scripts/script.php?script_id=1658)
 
 ## vim color schemes
