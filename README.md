@@ -10,6 +10,8 @@ A central home for my personal vim configuration and frequently used scripts.
 * [SuperTab](http://www.vim.org/scripts/script.php?script_id=1643)
 * [surround](http://www.vim.org/scripts/script.php?script_id=1697)
 * [The NERD tree](http://www.vim.org/scripts/script.php?script_id=1658)
+* [vim-scala](https://github.com/derekwyatt/vim-scala)
+* [Vimpanel](http://www.vim.org/scripts/script.php?script_id=4409)
 * [xmledit](http://www.vim.org/scripts/script.php?script_id=301)
 
 ## vim syntax and identation
@@ -19,6 +21,8 @@ A central home for my personal vim configuration and frequently used scripts.
 ## vim color schemes
 * [harlequin](http://www.vim.org/scripts/script.php?script_id=4195)
 * [jellybeans](http://www.vim.org/scripts/script.php?script_id=2555)
+* [lucius] (http://www.vim.org/scripts/script.php?script_id=2536)
+* [molokai](http://www.vim.org/scripts/script.php?script_id=2340)
 * [norwaytoday](http://www.vim.org/scripts/script.php?script_id=2517)
 * [Solarized](http://www.vim.org/scripts/script.php?script_id=3520)
 

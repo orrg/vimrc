@@ -43,7 +43,7 @@ set showmatch
 set matchtime=3          " duration for showing matches
 set magic                " Enable extended regexes.
 
-set helpheight=10        " height of the help window
+set helpheight=9999      " height of the help window
 set ch=1                 " Make command line two lines high
 set mousehide            " Hide the mouse when typing text
 set showmode             " shows edit mode
@@ -113,6 +113,11 @@ if has ("win32")
     " disable menubar and toolbar
     set guioptions-=T
     set guioptions-=m
+    " disable the left and right scrollbars for normal and split windows
+    set guioptions-=l
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions-=R
 
     set backupdir=$USERPROFILE/.vim/backup
     set directory=$USERPROFILE/.vim/swap
@@ -150,6 +155,15 @@ endif
 if has('unix')
   if has ("gui_running")
     set guifont=Source\ Code\ Pro\ 12
+
+    " disable menubar and toolbar
+    set guioptions-=T
+    set guioptions-=m
+    " disable the left and right scrollbars for normal and split windows
+    set guioptions-=l
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions-=R
 
     " Directory settings
     set backupdir=~/.vim/backups
@@ -190,9 +204,20 @@ let g:SuperTabContextDiscoverDiscovery =
       \ ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 let g:SuperTabCrMapping = 1
 
+" Abbreviations for the Vimpanel plugin
+cabbrev vp Vimpanel
+cabbrev vl VimpanelLoad
+cabbrev vc VimpanelCreate
+cabbrev ve VimpanelEdit
+cabbrev vr VimpanelRefresh
+
 " ---------------------------------------------------------------------------
 " filetype specific settings
 " ---------------------------------------------------------------------------
+
+" scala files
+au BufRead,BufNewFile *.scala set shiftwidth=2
+au BufRead,BufNewFile *.scala set textwidth=78
 
 " java files
 au BufRead,BufNewFile *.java set shiftwidth=4
