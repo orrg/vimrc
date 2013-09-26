@@ -43,7 +43,7 @@ set showmatch
 set matchtime=3          " duration for showing matches
 set magic                " Enable extended regexes.
 
-set helpheight=9999      " height of the help window, 9999 = fullscreen
+set helpheight=25        " height of the help window, 9999 = fullscreen
 set ch=1                 " Make command line two lines high
 set mousehide            " Hide the mouse when typing text
 set showmode             " shows edit mode
@@ -90,6 +90,7 @@ set formatoptions+=1 " Break before 1-letter words
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 
+map <F4> :UndotreeToggle<cr>
 map <F5> :CtrlP<CR>
 map <F6> :CtrlPBuffer<CR>
 map <F7> :CtrlPMRUFiles<CR>
@@ -146,19 +147,30 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'ervandew/supertab'
 Bundle 'mihaifm/vimpanel'
 Bundle 'spolu/dwm.vim'
-Bundle 'msanders/snipmate.vim'
 Bundle 'Raimondi/delimitMate'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'mbbill/undotree'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+" file type bundles
 Bundle 'derekwyatt/vim-scala'
 Bundle 'maciakl/vim-neatstatus'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'plasticboy/vim-markdown'
+Bundle 'vim-scripts/VimClojure'
+Bundle 'aklt/plantuml-syntax'
+" color scheme bundles
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
 Bundle 'zeis/vim-kolor'
+Bundle 'genadyp/atelier_colors'
+Bundle 'chriskempson/vim-tomorrow-theme'
 
-colorscheme molokai      " select the color scheme for syntax
-syntax on                " enable syntax hilighing
+colorscheme Tomorrow-Night-Bright " select the color scheme for syntax
+syntax on " enable syntax hilighing
 
 " ---------------------------------------------------------------------------
 " plugin specific settings
@@ -176,6 +188,7 @@ let g:SuperTabContextDiscoverDiscovery =
       \ ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 let g:SuperTabCrMapping = 1
 
+let g:SuperTabNoCompleteAfter = ['^']
 " Abbreviations for the Vimpanel plugin
 cabbrev vp Vimpanel
 cabbrev vl VimpanelLoad
@@ -205,6 +218,7 @@ au BufRead,BufNewFile *.xml set textwidth=100
 " markdown files
 au BufRead,BufNewFile *.md set shiftwidth=2
 au BufRead,BufNewFile *.md set textwidth=78
+au BufRead,BufNewFile *.md set ft=markdown
 
 " vimwiki files
 au BufRead,BufNewFile *.wiki set shiftwidth=2
@@ -215,6 +229,11 @@ au BufRead,BufNewFile *.wiki set ft=vimwiki
 au BufRead,BufNewFile *.plant set shiftwidth=2
 au BufRead,BufNewFile *.plant set textwidth=78
 au BufRead,BufNewFile *.plant set ft=plantuml
+
+" clojure files
+au BufRead,BufNewFile *.clj set shiftwidth=2
+au BufRead,BufNewFile *.clj set textwidth=78
+au BufRead,BufNewFile *.clj set ft=clojure
 
 " ---------------------------------------------------------------------------
 " EOF
