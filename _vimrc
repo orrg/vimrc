@@ -25,6 +25,7 @@ set breakat="\ !@*-+;:,./?"
 set wrapmargin=0         " no wrap at the end of the line
 set nostartofline        " Don't reposition cursor when moving around
 set nowrap               " Do not wrap lines.
+set encoding=utf-8       " Set the file encoding
 
 set title                " Show the filename in the window titlebar.
 set mouse=a              " Enable moouse in all in all modes.
@@ -154,22 +155,23 @@ Bundle 'mbbill/undotree'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
+Bundle "bling/vim-airline"
 " file type bundles
-Bundle 'derekwyatt/vim-scala'
-Bundle 'maciakl/vim-neatstatus'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'vim-scripts/VimClojure'
 Bundle 'aklt/plantuml-syntax'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'derekwyatt/vim-scala'
 " color scheme bundles
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
 Bundle 'zeis/vim-kolor'
 Bundle 'genadyp/atelier_colors'
 Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'vim-scripts/wombat256.vim'
 
-colorscheme Tomorrow-Night-Bright " select the color scheme for syntax
+colorscheme wombat256mod
 syntax on " enable syntax hilighing
 
 " ---------------------------------------------------------------------------
@@ -180,6 +182,7 @@ syntax on " enable syntax hilighing
 let g:NERDTreeQuitOnOpen = 1
 
 " SuperTab
+let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabCompletionContexts =
       \ ['s:ContextText', 's:ContextDiscover']
 let g:SuperTabContextTextOmniPrecedence =
@@ -187,8 +190,8 @@ let g:SuperTabContextTextOmniPrecedence =
 let g:SuperTabContextDiscoverDiscovery =
       \ ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 let g:SuperTabCrMapping = 1
+let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
 
-let g:SuperTabNoCompleteAfter = ['^']
 " Abbreviations for the Vimpanel plugin
 cabbrev vp Vimpanel
 cabbrev vl VimpanelLoad
@@ -203,6 +206,7 @@ cabbrev vr VimpanelRefresh
 " scala files
 au BufRead,BufNewFile *.scala set shiftwidth=2
 au BufRead,BufNewFile *.scala set textwidth=78
+au BufRead,BufNewFile *.scala set ft=scala
 
 " java files
 au BufRead,BufNewFile *.java set shiftwidth=4
@@ -219,6 +223,11 @@ au BufRead,BufNewFile *.xml set textwidth=100
 au BufRead,BufNewFile *.md set shiftwidth=2
 au BufRead,BufNewFile *.md set textwidth=78
 au BufRead,BufNewFile *.md set ft=markdown
+
+" jade files
+au BufRead,BufNewFile *.jade set shiftwidth=2
+au BufRead,BufNewFile *.jade set textwidth=78
+au BufRead,BufNewFile *.jade set ft=jade
 
 " vimwiki files
 au BufRead,BufNewFile *.wiki set shiftwidth=2
