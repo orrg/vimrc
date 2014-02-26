@@ -64,6 +64,8 @@ set wildchar=<TAB>       " Character for CLI expansion (TAB-completion).
 set wildmenu             " Shows possible completions above cmd line
 set wildmode=list:longest " Complete only until point of ambiguity.
 
+set completeopt+=preview
+
 set diffopt=filler       " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite      " Ignore whitespace changes (focus on code changes)
 
@@ -81,7 +83,7 @@ set formatoptions+=2 " Use indent from 2nd line of a paragraph
 set formatoptions+=l " Don't break lines that are already long
 set formatoptions+=1 " Break before 1-letter words
 
-" set ofu=syntaxcomplete#Complete " Set omni-completion method.
+set tags=tags;/
 
 " ---------------------------------------------------------------------------
 " keyboard settings
@@ -91,11 +93,13 @@ set formatoptions+=1 " Break before 1-letter words
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 
-map <F4> :UndotreeToggle<cr>
+map <F2> :NERDTreeToggle<CR>
+map <F4> :UndotreeToggle<CR>
 map <F5> :CtrlP<CR>
 map <F6> :CtrlPBuffer<CR>
 map <F7> :CtrlPMRUFiles<CR>
 map <F8> :CtrlPBookmarkDir<CR>
+map <F9> :TagbarToggle<CR>
 
 map <C-c> :bdelete<CR>
 map <C-t> :tabnew<CR>
@@ -152,17 +156,19 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'mbbill/undotree'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "bling/vim-airline"
-" file type bundles
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+" file type bundles
 Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'aklt/plantuml-syntax'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'groenewege/vim-less'
 " color scheme bundles
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
@@ -171,12 +177,15 @@ Bundle 'genadyp/atelier_colors'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'vim-scripts/wombat256.vim'
 
-colorscheme wombat256mod
+colorscheme molokai
 syntax on " enable syntax hilighing
 
 " ---------------------------------------------------------------------------
 " plugin specific settings
 " ---------------------------------------------------------------------------
+
+" Tagbar settings
+let g:tagbar_autoclose = 1
 
 " NERDTree settings
 let g:NERDTreeQuitOnOpen = 1
@@ -238,11 +247,6 @@ au BufRead,BufNewFile *.wiki set ft=vimwiki
 au BufRead,BufNewFile *.plant set shiftwidth=2
 au BufRead,BufNewFile *.plant set textwidth=78
 au BufRead,BufNewFile *.plant set ft=plantuml
-
-" clojure files
-au BufRead,BufNewFile *.clj set shiftwidth=2
-au BufRead,BufNewFile *.clj set textwidth=78
-au BufRead,BufNewFile *.clj set ft=clojure
 
 " ---------------------------------------------------------------------------
 " EOF
