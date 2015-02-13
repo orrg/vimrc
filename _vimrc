@@ -3,7 +3,7 @@
 " ---------------------------------------------------------------------------
 
 set nocompatible " disable vi compatibility for sake of usability
-filetype plugin indent on
+set encoding=utf-8
 
 " Settings for the bundle manager: gmarik/vundle
 set rtp+=$VIM/vimfiles/bundle/vundle
@@ -15,17 +15,17 @@ call vundle#rc('$VIM/vimfiles/bundle')
 
 set sw=2                 " number of spaces for autoindent
 set ts=2                 " number of spaces used for a tab
+set tw=78                " the textwidth
 set softtabstop=2        " number of spaces a tab counts during editing
 set smarttab             " use spaces instead of tabs at beginning of a line
 set expandtab            " replace tab by space during insert
-set autoindent           " Copy indent from last line when starting new line.
+set autoindent smartindent " 
 set backspace=indent,eol,start
 set linebreak            " break wider lines at suitable characters
 set breakat="\ !@*-+;:,./?"
 set wrapmargin=0         " no wrap at the end of the line
 set nostartofline        " Don't reposition cursor when moving around
 set nowrap               " Do not wrap lines.
-set encoding=utf-8       " Set the file encoding
 
 set title                " Show the filename in the window titlebar.
 set mouse=a              " Enable moouse in all in all modes.
@@ -56,6 +56,7 @@ set laststatus=2         " always show the statusbar
 set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]
 set noerrorbells         " no bell on errors
 set visualbell           " no beep just flash
+set ttyfast              " indicates a fast terminal connection
 set ls=2                 " show filename
 set scrolloff=3          " Start scrolling 3 lines before horizontal border
 set sidescrolloff=3      " Start scrolling 3 columns before vertical border
@@ -69,8 +70,8 @@ set completeopt+=preview
 set diffopt=filler       " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite      " Ignore whitespace changes (focus on code changes)
 
-set foldmethod=syntax    " Markers are used to specify folds.
-set foldminlines=0       " Allow folding single lines
+set foldmethod=manual    " Markers are used to specify folds.
+set foldminlines=1       " Allow folding single lines
 set foldnestmax=3        " Set max fold nesting level
 
 set formatoptions=
@@ -93,21 +94,22 @@ set tags=tags;/
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 
-map <F2> :NERDTreeToggle<CR>
-map <F4> :UndotreeToggle<CR>
-map <F5> :CtrlP<CR>
-map <F6> :CtrlPBuffer<CR>
-map <F7> :CtrlPMRUFiles<CR>
-map <F8> :CtrlPBookmarkDir<CR>
-map <F9> :TagbarToggle<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <F3> :CtrlPSmartTabs<CR>
+nnoremap <F4> :UndotreeToggle<CR>
+nnoremap <F5> :CtrlP<CR>
+nnoremap <F6> :CtrlPBuffer<CR>
+nnoremap <F7> :CtrlPMRUFiles<CR>
+nnoremap <F8> :CtrlPBookmarkDir<CR>
+nnoremap <F9> :TagbarToggle<CR>
 
-map <C-c> :bdelete<CR>
-map <C-t> :tabnew<CR>
-map <C-Tab> :tabnext<CR>
-map <C-Left> :tabprevious<CR>
-map <C-Right> :tabnext<CR>
-map <M-Right> <C-W>w
-map <M-Left> <C-W>W
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-Tab> :tabnext<CR>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <M-Right> <C-W>w
+nnoremap <M-Left> <C-W>W
+nnoremap <C-n> :bnext<CR>
 
 " ---------------------------------------------------------------------------
 " platform specific settings
@@ -146,22 +148,26 @@ endif
 " ---------------------------------------------------------------------------
 
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
+Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'ervandew/supertab'
-Bundle 'mihaifm/vimpanel'
-Bundle 'spolu/dwm.vim'
-Bundle 'Raimondi/delimitMate'
+Bundle 'tpope/vim-surround'
+Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
+Bundle 'mattn/emmet-vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'mbbill/undotree'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
-Bundle 'bling/vim-airline'
-Bundle 'kien/ctrlp.vim'
+Bundle 'DavidEGx/ctrlp-smarttabs'
 Bundle 'scrooloose/nerdtree'
+Bundle 'Keithbsmiley/investigate.vim'
+Bundle 'pydave/AsyncCommand'
+Bundle 'KabbAmine/zeavim.vim'
+Bundle 'ap/vim-buftabline'
 " file type bundles
 Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'plasticboy/vim-markdown'
@@ -169,16 +175,33 @@ Bundle 'aklt/plantuml-syntax'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'groenewege/vim-less'
+Bundle 'skammer/vim-css-color'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-jdaddy'
+Bundle 'chrisbra/csv.vim'
+Bundle 'kchmck/vim-coffee-script'
 " color scheme bundles
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tomasr/molokai'
-Bundle 'zeis/vim-kolor'
-Bundle 'genadyp/atelier_colors'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'vim-scripts/wombat256.vim'
+Bundle 'noahfrederick/vim-noctu'
+Bundle 'noahfrederick/vim-hemisu'
+Bundle 'vim-scripts/apprentice.vim'
+Bundle 'vim-scripts/darknight256.vim'
+Bundle 'vim-scripts/mrkn256.vim'
+Bundle 'jonathanfilip/vim-lucius'
+Bundle 'goatslacker/mango.vim'
+Bundle 'gosukiwi/vim-atom-dark'
+Bundle 'croaker/mustang-vim'
 
-colorscheme molokai
-syntax on " enable syntax hilighing
+set t_Co=256
+if has ("gui_running")
+  set background=dark
+  colorscheme atom-dark
+else
+  set background=dark
+  colorscheme atom-dark
+endif
+syntax on " enable syntax hilighting
+filetype plugin indent on
 
 " ---------------------------------------------------------------------------
 " plugin specific settings
@@ -186,6 +209,7 @@ syntax on " enable syntax hilighing
 
 " Tagbar settings
 let g:tagbar_autoclose = 1
+let g:tagbar_usearrows = 1
 
 " NERDTree settings
 let g:NERDTreeQuitOnOpen = 1
@@ -201,52 +225,27 @@ let g:SuperTabContextDiscoverDiscovery =
 let g:SuperTabCrMapping = 1
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
 
-" Abbreviations for the Vimpanel plugin
-cabbrev vp Vimpanel
-cabbrev vl VimpanelLoad
-cabbrev vc VimpanelCreate
-cabbrev ve VimpanelEdit
-cabbrev vr VimpanelRefresh
+" Set location of zeal for the zeavim plugin
+if has('win32') || has('win64')
+  let g:zv_zeal_directory = "C:\\Users\\lrx130\\Apps\\zeal\\zeal.exe"
+else
+  let g:zv_zeal_directory = "/usr/bin/zeal"
+endif
+
+" let g:user_emmet_settings = webapi#json#decode(join(readfile(expand("$USERPROFILE/.vim/snippets/orrg-snippets.json")), "\n"))
 
 " ---------------------------------------------------------------------------
 " filetype specific settings
 " ---------------------------------------------------------------------------
-
-" scala files
-au BufRead,BufNewFile *.scala set shiftwidth=2
-au BufRead,BufNewFile *.scala set textwidth=78
-au BufRead,BufNewFile *.scala set ft=scala
-
-" java files
-au BufRead,BufNewFile *.java set shiftwidth=4
-au BufRead,BufNewFile *.java set textwidth=78
-
-" text files
-au BufRead,BufNewFile *.txt set textwidth=78
-
-" xml files
-au BufRead,BufNewFile *.xml set shiftwidth=2
-au BufRead,BufNewFile *.xml set textwidth=100
-
-" markdown files
-au BufRead,BufNewFile *.md set shiftwidth=2
-au BufRead,BufNewFile *.md set textwidth=78
-au BufRead,BufNewFile *.md set ft=markdown
-
-" jade files
-au BufRead,BufNewFile *.jade set shiftwidth=2
-au BufRead,BufNewFile *.jade set textwidth=78
-au BufRead,BufNewFile *.jade set ft=jade
-
-" vimwiki files
-au BufRead,BufNewFile *.wiki set shiftwidth=2
-au BufRead,BufNewFile *.wiki set textwidth=78
-au BufRead,BufNewFile *.wiki set ft=vimwiki
-
-" plantuml files
-au BufRead,BufNewFile *.plant set shiftwidth=2
-au BufRead,BufNewFile *.plant set textwidth=78
-au BufRead,BufNewFile *.plant set ft=plantuml
+augroup filetypedetect
+  au! BufRead, BufNewFile *.csv,*.dat setfiletype csv
+  au! BufRead, BufNewFile *.scala,*.sbt setfiletype scala
+  au! BufRead, BufNewFile *.java,*.groovy setfiletype java
+  au! BufRead, BufNewFile *.md setfiletype markdown
+  au! BufRead, BufNewFile *.jade setfiletype jade
+  au! BufRead, BufNewFile *.plant setfiletype plantuml
+  au! BufRead, BufNewFile *.text,*.txt setfiletype text
+augroup END
 
 " ---------------------------------------------------------------------------
 " EOF
