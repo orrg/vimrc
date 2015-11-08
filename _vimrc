@@ -166,7 +166,6 @@ Bundle 'DavidEGx/ctrlp-smarttabs'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Keithbsmiley/investigate.vim'
 Bundle 'pydave/AsyncCommand'
-Bundle 'KabbAmine/zeavim.vim'
 Bundle 'ap/vim-buftabline'
 " file type bundles
 Bundle 'vim-scripts/JavaScript-Indent'
@@ -181,6 +180,9 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-jdaddy'
 Bundle 'chrisbra/csv.vim'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'jason0x43/vim-js-indent'
+Bundle 'jimenezrick/vimerl'
 " color scheme bundles
 Bundle 'noahfrederick/vim-noctu'
 Bundle 'noahfrederick/vim-hemisu'
@@ -198,7 +200,7 @@ if has ("gui_running")
   colorscheme atom-dark
 else
   set background=dark
-  colorscheme atom-dark
+  colorscheme apprentice
 endif
 syntax on " enable syntax hilighting
 filetype plugin indent on
@@ -225,11 +227,11 @@ let g:SuperTabContextDiscoverDiscovery =
 let g:SuperTabCrMapping = 1
 let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
 
-" Set location of zeal for the zeavim plugin
-if has('win32') || has('win64')
-  let g:zv_zeal_directory = "C:\\Users\\lrx130\\Apps\\zeal\\zeal.exe"
+" Ctrl-P settings
+if has('win32')
+  let g:ctrlp_cache_dir = "$USERPROFILE/.vim/ctrlp_cache/"
 else
-  let g:zv_zeal_directory = "/usr/bin/zeal"
+  let g:ctrlp_cache_dir = "$HOME/.vim/ctrlp_cache/"
 endif
 
 " let g:user_emmet_settings = webapi#json#decode(join(readfile(expand("$USERPROFILE/.vim/snippets/orrg-snippets.json")), "\n"))

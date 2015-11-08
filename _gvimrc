@@ -74,8 +74,6 @@ if has('title') && (has('gui_running') || &title)
   set titlestring+=%f\ " file name
   " append file attributes
   set titlestring+=%h%m%r%w
-  " append program name
-  set titlestring+=\ -\ %{v:progname}
   " append working directory
   set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}
 endif
