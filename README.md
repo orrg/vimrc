@@ -29,7 +29,10 @@ A central home for my personal vim configuration and frequently used scripts.
 
 ## vim syntax and identation
 * [CSV syntax](https://github.com/chrisbra/csv.vim)
-* [Erlang syntax](https://github.com/jimenezrick/vimerl)
+* [Erlang syntax and indentation](https://github.com/vim-erlang/vim-erlang-runtime)
+* [Erlang syntax checking and compiler](https://github.com/vim-erlang/vim-erlang-compiler)
+* [Erlang omnicomplete](https://github.com/vim-erlang/vim-erlang-omnicomplete)
+* [Erlang tags](https://github.com/vim-erlang/vim-erlang-tags)
 * [JavaScript indent](https://github.com/vim-scripts/JavaScript-Indent)
 * [Markdown syntax](https://github.com/plasticboy/vim-markdown)
 * [PlantUML syntax](https://github.com/aklt/plantuml-syntax)
