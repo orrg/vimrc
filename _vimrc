@@ -4,10 +4,56 @@
 
 set nocompatible " disable vi compatibility for sake of usability
 set encoding=utf-8
+filetype off
 
-" Settings for the bundle manager: gmarik/vundle
-set rtp+=$VIM/vimfiles/bundle/vundle
-call vundle#rc('$VIM/vimfiles/bundle')
+" Load the plugin manager
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
+Plugin 'mbbill/undotree'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'DavidEGx/ctrlp-smarttabs'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Keithbsmiley/investigate.vim'
+Plugin 'pydave/AsyncCommand'
+Plugin 'ap/vim-buftabline'
+" file type bundles
+Plugin 'vim-scripts/JavaScript-Indent'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'aklt/plantuml-syntax'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'groenewege/vim-less'
+Plugin 'skammer/vim-css-color'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-jdaddy'
+Plugin 'chrisbra/csv.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'jason0x43/vim-js-indent'
+Plugin 'jimenezrick/vimerl'
+Plugin 'fatih/vim-go'
+" color scheme bundles
+Plugin 'noahfrederick/vim-noctu'
+Plugin 'noahfrederick/vim-hemisu'
+Plugin 'nanotech/jellybeans.vim'
+
+call vundle#end()
+filetype plugin indent on
 
 " ---------------------------------------------------------------------------
 " editor setings
@@ -143,67 +189,15 @@ if has('title') && (has('gui_running') || &title)
   set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}
 endif
 
-" ---------------------------------------------------------------------------
-" Provide vundle with the required plugins
-" ---------------------------------------------------------------------------
-
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'bling/vim-airline'
-Bundle 'majutsushi/tagbar'
-Bundle 'mattn/emmet-vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
-Bundle 'mbbill/undotree'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'DavidEGx/ctrlp-smarttabs'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Keithbsmiley/investigate.vim'
-Bundle 'pydave/AsyncCommand'
-Bundle 'ap/vim-buftabline'
-" file type bundles
-Bundle 'vim-scripts/JavaScript-Indent'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'aklt/plantuml-syntax'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'groenewege/vim-less'
-Bundle 'skammer/vim-css-color'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-jdaddy'
-Bundle 'chrisbra/csv.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'jason0x43/vim-js-indent'
-Bundle 'jimenezrick/vimerl'
-" color scheme bundles
-Bundle 'noahfrederick/vim-noctu'
-Bundle 'noahfrederick/vim-hemisu'
-Bundle 'vim-scripts/apprentice.vim'
-Bundle 'vim-scripts/darknight256.vim'
-Bundle 'vim-scripts/mrkn256.vim'
-Bundle 'jonathanfilip/vim-lucius'
-Bundle 'goatslacker/mango.vim'
-Bundle 'gosukiwi/vim-atom-dark'
-Bundle 'croaker/mustang-vim'
-
 set t_Co=256
 if has ("gui_running")
   set background=dark
-  colorscheme atom-dark
+  colorscheme jellybeans
 else
   set background=dark
-  colorscheme apprentice
+  colorscheme jellybeans
 endif
 syntax on " enable syntax hilighting
-filetype plugin indent on
 
 " ---------------------------------------------------------------------------
 " plugin specific settings
