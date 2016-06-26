@@ -2,6 +2,8 @@
 
 A central home for my personal vim configuration and frequently used scripts.
 
+![Screen](/screen/gvim.png?raw=true)
+
 ## vim scripts
 * [airline](https://github.com/bling/vim-airline)
 * [asyccommand](https://github.com/pydave/AsyncCommand)
